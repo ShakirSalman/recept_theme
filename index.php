@@ -2,14 +2,14 @@
 get_header();
 ?>
 
-<main class="container mt-3">
+<div class="container">
 
 	<pre>index.php</pre>
 
 	<hr />
 
 	<div class="row">
-		<div class="col-md-9 content">
+		<div class="col-md-9">
 			<!-- Do we have any posts to display? -->
 			<?php if (have_posts()) : ?>
 				<!-- Yay, we has posts do display! -->
@@ -18,8 +18,23 @@ get_header();
 					<?php
 						// Load next post to display
 						the_post();
-						get_template_part('template-parts/content', 'excerpt');
 					?>
+					<article class="card mb-4">
+						<div class="card-body">
+							<h2 class="card-title h4">
+								<a href="<?php the_permalink(); ?>">
+									<?php the_title(); ?>
+								</a>
+							</h2>
+							<div class="card-meta text-muted small mb-2">
+								Post published <?php echo get_the_date(); ?> at <?php the_time(); ?> by <?php the_author(); ?> in <?php the_category(', '); ?>
+							</div>
+
+							<div class="card-text">
+								<?php the_excerpt(); ?>
+							</div>
+						</div>
+					</article>
 					<!-- End post -->
 				<?php endwhile; ?>
 			<?php else: ?>
@@ -27,8 +42,12 @@ get_header();
 			<?php endif; ?>
 		</div><!-- /.col-md-9 -->
 
+		<div class="col-md-3">
+			<?php include('sidebar.php'); ?>
+		</div><!-- /.col-md-3 -->
+
 	</div><!-- /.row -->
-</main><!-- /.container -->
+</div><!-- /.container -->
 
 <?php
 get_footer();
