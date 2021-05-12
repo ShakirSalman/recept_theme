@@ -45,7 +45,7 @@ get_header();
 		</div><!-- /.col-md-9 -->
 
 		<div class="col-md-3">
-			<?php include('sidebar.php'); ?>
+			<?php get_sidebar(); ?>
 		</div><!-- /.col-md-3 -->
 
 	</div><!-- /.row -->
