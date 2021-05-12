@@ -31,8 +31,11 @@ get_header();
 							</div>
 
 							<div class="card-text">
+								<!-- before the_excerpt(); -->
 								<?php the_excerpt(); ?>
+								<!-- after the_excerpt(); -->
 							</div>
+
 						</div>
 					</article>
 					<!-- End post -->
