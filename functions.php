@@ -32,3 +32,8 @@ function mbt_filter_the_excerpt($excerpt) {
 	return $excerpt . '<div><a href="' . get_the_permalink() . '" class="btn btn-primary">Read more &raquo;</a></div>';
 }
 add_filter('the_excerpt', 'mbt_filter_the_excerpt');
+
+/**
+ * Declare support for 'title-tag'
+ */
+ add_theme_support('title-tag');
