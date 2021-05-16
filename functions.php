@@ -37,6 +37,12 @@ add_action('wp_enqueue_scripts', 'recept_theme_register_scripts_and_styles');
 add_theme_support('title-tag');
 
 /**
+ * Declare support for post-thumbnails.
+ */
+add_theme_support('post-thumbnails');
+
+
+/**
  * Register navigation menus.
  */
  function recept_theme_register_nav_menus() {
