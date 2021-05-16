@@ -1,0 +1,18 @@
+/**
+ * Print styles
+ */
+
+/* Hide main menu */
+nav.navbar {
+	display: none;
+}
+
+/* Make main content as wide as possible */
+.content {
+	width: 100%;
+}
+
+/* Hide sidebar */
+.sidebar {
+	display: none;
+}
