@@ -20,7 +20,7 @@ get_header();
 					<?php
 						// Load next post to display
 						the_post();
-						get_template_part('template-parts/post');
+						get_template_part('template-parts/content', 'excerpt');
 					?>
 					<!-- End post -->
 				<?php endwhile; ?>

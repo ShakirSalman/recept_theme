@@ -16,18 +16,13 @@ get_header();
 			<?php
 				// Load next post to display
 				the_post();
+				get_template_part('template-parts/content', 'page');
 			?>
-			<article>
-				<h1 class="text-center my-5"><?php the_title(); ?></h1>
 
-				<div class="card-text">
-					<?php the_content(); ?>
-				</div>
-			</article>
 			<!-- End post -->
 		<?php endwhile; ?>
 	<?php else: ?>
-		<p>Sorry, no post found.</p>
+		<p>Sorry, no Page found.</p>
 	<?php endif; ?>
 
 </main>
