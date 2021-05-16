@@ -8,7 +8,8 @@
 	<?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
+	<?php wp_body_open(); ?>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
 			<a class="navbar-brand" href="/">

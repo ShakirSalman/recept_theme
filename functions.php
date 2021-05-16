@@ -2,7 +2,15 @@
 
 require_once('includes/Bootstrap_5_WP_Nav_Menu_Walker.php');
 
+/**
+ * Register neccessary scripts and styles.
+ *
+ * @return void
+ */
 function recept_theme_register_scripts_and_styles() {
+	/**
+	* Styles
+	*/
 	// Bootstrap 5
 	wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css', [], '5.0.0-beta3', 'all');
 	
@@ -11,6 +19,15 @@ function recept_theme_register_scripts_and_styles() {
 	
 	// Print styles
 	wp_enqueue_style('recept_theme-print', get_parent_theme_file_uri('print.css'), ['bootstrap'], '0.1', 'print');
+	
+	/**
+	 * Scripts
+	 */
+	// Bootstrap 5
+	 wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js', [], '5.0.0-beta3', true);
+	 
+	// Theme scripts
+	wp_enqueue_script('recept_theme', get_parent_theme_file_uri('assets/js/scripts.js'), ['bootstrap'], '0.1', true);
 }
 add_action('wp_enqueue_scripts', 'recept_theme_register_scripts_and_styles');
 
