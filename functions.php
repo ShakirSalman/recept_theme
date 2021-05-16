@@ -41,6 +41,10 @@ add_theme_support('title-tag');
  */
 add_theme_support('post-thumbnails');
 
+/**
+ * Declare our own image size for archives
+ */
+ add_image_size('featured-image-thumb', 520, 9999);
 
 /**
  * Register navigation menus.

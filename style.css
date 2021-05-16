@@ -14,3 +14,15 @@ Text Domain: recepttheme
 .text-justify {
 	text-align: justify;
 }
+
+article .row > div,
+article .row .card-body,
+article .row .card-body .card-text {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+article footer {
+	margin-top: 1rem;
+}
