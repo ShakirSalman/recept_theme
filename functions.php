@@ -69,12 +69,24 @@ add_filter('the_excerpt', 'recept_theme_filter_the_excerpt');
  * @return void
  */
 function recept_theme_widgets_init() {
+	// Blog widget area
 	register_sidebar([
 		'name' => 'Blog Sidebar',
 		'id' => 'blog-sidebar',
 		'description' => 'Sidebar on blog index, category archive and single blog posts.',
 		'before_widget' => '<div id="%1$s" class="card mb-3 widget %2$s"><div class="card-body">',
 		'after_widget' => '</div></div>',
+		'before_title' => '<h3 class="widget-title h5">',
+		'after_title' => '</h3>',
+	]);
+	
+	// Footer widget area
+	register_sidebar([
+		'name' => 'Footer',
+		'id' => 'sidebar-footer',
+		'description' => 'Page Footer',
+		'before_widget' => '<div id="%1$s" class="text-justify col widget %2$s">',
+		'after_widget' => '</div>',
 		'before_title' => '<h3 class="widget-title h5">',
 		'after_title' => '</h3>',
 	]);

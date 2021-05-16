@@ -10,3 +10,7 @@ License: WTFPL
 License URI: http://www.wtfpl.net/
 Text Domain: recepttheme
 */
+
+.text-justify {
+	text-align: justify;
+}
