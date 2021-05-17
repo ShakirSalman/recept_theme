@@ -117,5 +117,16 @@ function recept_theme_widgets_init() {
 		'before_title' => '<h3 class="widget-title h5">',
 		'after_title' => '</h3>',
 	]);
+	
+	// Page widget area
+	register_sidebar([
+		'name' => 'Page Sidebar',
+		'id' => 'page-sidebar',
+		'description' => 'Sidebar on pages.',
+		'before_widget' => '<div id="%1$s" class="card mb-3 widget %2$s"><div class="card-body">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<h3 class="widget-title h5">',
+		'after_title' => '</h3>',
+	]);
 }
 add_action('widgets_init', 'recept_theme_widgets_init');
