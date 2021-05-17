@@ -14,7 +14,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="/">
-					<?php bloginfo('name'); ?>
+					<?php recept_theme_navbar_brand(); ?>
 				</a>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,4 +36,31 @@
 				?>
 			</div>
 		</nav>
+		
+		<?php if (get_header_image()) : ?>
+			<?php
+				if (is_category()) {
+					$title = single_cat_title('Category: ', false);
+				} else if (is_tag()) {
+					$title = single_tag_title('Tag: ', false);
+				} else if (is_home()) {
+					$title = "Blog";
+				} else if (is_search()) {
+					$title = sprintf('Search results for "%s"', htmlspecialchars($_REQUEST['s']));
+				} else {
+					$title = get_the_title();
+				}
+			?>
+			<div id="site-header">
+				<img src="<?php header_image(); ?>"
+					width="<?php echo absint(get_custom_header()->width); ?>"
+					height="<?php echo absint(get_custom_header()->height); ?>"
+					alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"
+					class="img-fluid"
+				>
+				<div class="header-text-wrapper">
+					<div class="header-text display-4"><?php echo $title; ?></div>
+				</div>
+			</div>
+		<?php endif; ?>
 	</header>

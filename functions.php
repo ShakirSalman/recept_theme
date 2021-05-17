@@ -32,19 +32,126 @@ function recept_theme_register_scripts_and_styles() {
 add_action('wp_enqueue_scripts', 'recept_theme_register_scripts_and_styles');
 
 /**
- * Declare support for title-tag.
+ * Setup theme.
+ *
+ * @return void
  */
-add_theme_support('title-tag');
+ function recept_theme_theme_setup() {
+
+	/**
+	 * Declare support for title-tag.
+	 */
+	add_theme_support('title-tag');
+
+	/**
+	 * Declare support for post-thumbnails.
+	 */
+	add_theme_support('post-thumbnails');
+
+	/**
+	 * Declare support for custom logo.
+	 */
+	add_theme_support('custom-logo', [
+		'height' => 100,
+		'width' => 200,
+	]);
+	
+	/**
+	* Declare support for custom header image.
+	*/
+	add_theme_support('custom-header', [
+	// Display the header text along with the image
+	'header-text' => true,
+
+	// Header image width (in pixels)
+	'width' => 2560,
+
+	// Header image height (in pixels)
+	'height' => 500,
+
+	// Allow flexible image width
+	'flex-width' => true,
+
+	// Allow flexible image height
+	'flex-height' => true,
+	]);
+
+	/**
+	 * Declare our own image size for archives
+	 */
+	add_image_size('featured-image-thumb', 400, 9999);
+
+}
+add_action('after_setup_theme', 'recept_theme_theme_setup');
 
 /**
- * Declare support for post-thumbnails.
+ * Output custom logo (if set, otherwise output site title).
+ *
+ * @return void
  */
-add_theme_support('post-thumbnails');
+function recept_theme_navbar_brand() {
+	$custom_logo_id = get_theme_mod('custom_logo');
+	$logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+
+	if ($logo) {
+		echo '<img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '">';
+	} else {
+		echo get_bloginfo('name');
+	}
+}
 
 /**
- * Declare our own image size for archives
+ * Register theme modifications in WP Customizer
+ *
+ * @param WP_Customize_Manager $wp_customizer
+ * @return void
  */
- add_image_size('featured-image-thumb', 520, 9999);
+function recept_theme_customizer($wp_customizer) {
+	// Header Textcolor
+	$wp_customizer->add_setting('header_textcolor', [
+		'default' => '#222222',
+	]);
+	
+	// Header Textshadow Color
+	$wp_customizer->add_setting('header_textshadow_color', [
+		'default' => '#dddddd',
+	]);
+	$wp_customizer->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customizer,
+			'header_textshadow_color',
+			[
+				'label' => 'Header Textshadow Color',			// Admin-visible name of the control
+				'setting' => 'header_textshadow_color',			// Which setting to load and manipulate
+				'section' => 'colors', 							// ID of the section this control should render in
+				'sanitize_callback' => 'sanitize_hex_color',	// Sanitize HEX color
+			]
+		)
+	);
+	// Blog Section
+	$wp_customizer->add_section('recept_theme_blog', [
+		'title' => 'Blog Settings',
+		'priority' => 30,
+	]);
+}
+add_action('customize_register', 'recept_theme_customizer');
+
+/**
+ * Output neccessary CSS for our theme modifications in WP Customizer.
+ *
+ * @return void
+ */
+function recept_theme_wp_head_customizer_css() {
+	?>
+		<style>
+			#site-header .header-text-wrapper {
+				color: #<?php echo get_theme_mod('header_textcolor'); ?>;
+				text-shadow: 0px 0px 4px <?php echo get_theme_mod('header_textshadow_color'); ?>;
+			}
+		</style>
+	<?php
+}
+add_action('wp_head', 'recept_theme_wp_head_customizer_css');
 
 /**
  * Register navigation menus.

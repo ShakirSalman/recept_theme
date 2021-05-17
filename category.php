@@ -6,7 +6,9 @@ get_header();
 
 	<pre>category.php</pre>
 
-	<h1>Category: <?php single_cat_title(); ?></h1>
+	<?php if (!get_header_image()) : ?>
+		<h1><?php single_cat_title('Category: '); ?></h1>
+	<?php endif; ?>
 
 	<hr />
 
@@ -26,7 +28,7 @@ get_header();
 					<!-- End post -->
 				<?php endwhile; ?>
 			<?php else: ?>
-				<p>Sorry, no posts found.</p>
+				<p>Sorry, no posts found in this category.</p>
 			<?php endif; ?>
 		</div><!-- /.col-md-9 -->
 
