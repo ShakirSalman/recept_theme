@@ -130,3 +130,27 @@ function recept_theme_widgets_init() {
 	]);
 }
 add_action('widgets_init', 'recept_theme_widgets_init');
+
+/**
+ * Filters content from bad words and replaces them with asterisk.
+ *
+ * @param string $content The content to be filtered
+ * @return string The filtered content
+ */
+ function recept_theme_filter_bad_words($content) {
+	$bad_words_raw = file_get_contents(get_parent_theme_file_path('includes/bad_words.txt'));
+	$bad_words_raw = trim($bad_words_raw);
+	$bad_words = explode("\n", $bad_words_raw);
+	$censored_words = [];
+
+	foreach ($bad_words as $bad_word) {
+		$len = strlen($bad_word);
+		$censored_word = str_repeat('*', $len);
+		array_push($censored_words, $censored_word);
+	}
+
+	return str_ireplace($bad_words, $censored_words, $content);
+}
+add_filter('the_content', 'recept_theme_filter_bad_words');
+add_filter('the_excerpt', 'recept_theme_filter_bad_words');
+add_filter('the_title', 'recept_theme_filter_bad_words');
