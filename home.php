@@ -33,6 +33,10 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 					?>
 					<!-- End post -->
 				<?php endwhile; ?>
+				
+				<!-- Pagination start -->
+				<?php get_template_part('template-parts/posts-pagination'); ?>
+				<!-- Pagination end -->
 			<?php else: ?>
 				<p>Sorry, no posts found.</p>
 			<?php endif; ?>

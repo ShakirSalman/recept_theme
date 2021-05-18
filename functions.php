@@ -1,6 +1,7 @@
 <?php
 
 require_once('includes/Bootstrap_5_WP_Nav_Menu_Walker.php');
+require_once('includes/bs5-pagination.php');
 
 /**
  * Register neccessary scripts and styles.
@@ -397,3 +398,14 @@ function recept_theme_post_meta($display = true) {
 		return $post_meta;
 	}
 }
+
+/**
+ * Add class to next/previous posts links
+ *
+ * @return string;
+ */
+ function recept_theme_filter_pagination_links() {
+	return 'class="btn btn-secondary"';
+}
+add_filter('next_posts_link_attributes', 'recept_theme_filter_pagination_links', 10, 0);
+add_filter('previous_posts_link_attributes', 'recept_theme_filter_pagination_links', 10, 0);

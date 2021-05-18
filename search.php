@@ -29,6 +29,10 @@ get_header();
 				</ul>
 				<!-- End search result -->
 			<?php endwhile; ?>
+			
+			<!-- Pagination start -->
+			<?php get_template_part('template-parts/posts-pagination'); ?>
+			<!-- Pagination end -->
 		<?php else: ?>
 			<p>Sorry, no search results found for "<?php echo htmlspecialchars($_REQUEST['s']); ?>".</p>
 		<?php endif; ?>
