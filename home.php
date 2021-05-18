@@ -9,15 +9,12 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 }
 ?>
 
+<!-- home.php -->
 <main class="container mt-3">
 
 	<?php if (!get_header_image()) : ?>
 		<h1>Blog</h1>
 	<?php endif; ?>
-
-	<pre>home.php</pre>
-
-	<hr />
 
 	<div class="row">
 		<div class="col-md-9 content <?php echo $content_order; ?>">
@@ -33,7 +30,7 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 					?>
 					<!-- End post -->
 				<?php endwhile; ?>
-				
+
 				<!-- Pagination start -->
 				<?php get_template_part('template-parts/posts-pagination'); ?>
 				<!-- Pagination end -->

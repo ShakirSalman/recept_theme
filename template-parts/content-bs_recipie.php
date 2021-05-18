@@ -12,7 +12,7 @@
 
 	<footer>
 		<div class="card-meta text-muted small mb-2">
-			<?php recept_theme_post_meta(); ?>
+			<?php bs_recipie_meta(); ?>
 		</div>
 	</footer>
 </article>

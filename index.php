@@ -2,11 +2,8 @@
 get_header();
 ?>
 
+<!-- index.php -->
 <main class="container mt-3">
-
-	<pre>index.php</pre>
-
-	<hr />
 
 	<div class="row">
 		<div class="col-md-9 content">

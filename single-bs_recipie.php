@@ -2,11 +2,8 @@
 get_header();
 ?>
 
+<!-- single-bs_recipie.php -->
 <main class="container">
-
-	<pre>single-bs_recipie.php</pre>
-
-	<hr />
 
 	<div class="row">
 		<div class="col-md-9 content">

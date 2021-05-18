@@ -9,9 +9,8 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 }
 ?>
 
+<!-- <pre>tag.php</pre> -->
 <main class="container">
-
-	<pre>tag.php</pre>
 
 	<?php if (!get_header_image()) : ?>
 		<h1><?php single_tag_title('Tag: '); ?></h1>
@@ -33,7 +32,7 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 					?>
 					<!-- End post -->
 				<?php endwhile; ?>
-				
+
 				<!-- Pagination start -->
 				<?php get_template_part('template-parts/posts-pagination'); ?>
 				<!-- Pagination end -->

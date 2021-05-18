@@ -2,15 +2,12 @@
 get_header();
 ?>
 
+<!-- archive-bs_recipie.php -->
 <main class="container mt-3">
 
 	<?php if (!get_header_image()) : ?>
 		<h1><?php post_type_archive_title(''); ?></h1>
 	<?php endif; ?>
-
-	<pre>archive-bs_recipie.php</pre>
-
-	<hr />
 
 	<div class="row">
 		<div class="col-md-9 content">
@@ -22,7 +19,7 @@ get_header();
 					<?php
 						// Load next post to display
 						the_post();
-						get_template_part('template-parts/content', 'excerpt');
+						get_template_part('template-parts/content-bs_recipie', 'excerpt');
 					?>
 					<!-- End post -->
 				<?php endwhile; ?>

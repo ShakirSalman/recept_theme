@@ -2,11 +2,8 @@
 get_header();
 ?>
 
+<!-- page.php -->
 <main class="container">
-
-	<pre>page.php</pre>
-
-	<hr />
 
 	<!-- Do we have any posts to display? -->
 	<?php if (have_posts()) : ?>

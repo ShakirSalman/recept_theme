@@ -342,7 +342,7 @@ function recept_theme_widgets_init() {
 	register_sidebar([
 		'name' => 'Recept Sidebar',
 		'id' => 'recept-sidebar',
-		'description' => 'Sidebar on recepts archive and single recept reviews.',
+		'description' => 'Sidebar on recepts archive and single recept.',
 		'before_widget' => '<div id="%1$s" class="card mb-3 widget %2$s"><div class="card-body">',
 		'after_widget' => '</div></div>',
 		'before_title' => '<h3 class="widget-title h5">',
@@ -420,3 +420,51 @@ function recept_theme_post_meta($display = true) {
 }
 add_filter('next_posts_link_attributes', 'recept_theme_filter_pagination_links', 10, 0);
 add_filter('previous_posts_link_attributes', 'recept_theme_filter_pagination_links', 10, 0);
+
+/**
+ * Add class to next/previous post links
+ *
+ * @return string;
+ */
+function recept_theme_filter_post_nav_link($link) {
+	return str_replace('<a href=', '<a class="page-link" href=', $link);
+}
+add_filter('previous_post_link', 'recept_theme_filter_post_nav_link', 10, 1);
+add_filter('next_post_link', 'recept_theme_filter_post_nav_link', 10, 1);
+
+function bs_recipie_meta($display = true) {
+	global $post;
+
+	$post_meta = sprintf(
+		"Review published %s at %s by %s",
+		get_the_date(),
+		get_the_time(),
+		get_the_author()
+	);
+
+	// $post_id = $post->ID;
+	$post_id = get_the_ID();
+
+	$meals = get_the_terms($post_id, 'bs_recept_meal');
+
+	if ($meals) {
+		$meal_links = [];
+		foreach ($meals as $meal) {
+			$meal_url = get_term_link($meal, 'bs_recept_meal');
+			$meal_link = sprintf('<a href="%s">%s</a>', $meal_url, $meal->name);
+			array_push($meal_links, $meal_link);
+		}
+
+		$post_meta = sprintf(
+			"%s in %s",
+			$post_meta,
+			implode(', ', $meal_links)
+		);
+	}
+
+	if ($display) {
+		echo $post_meta;
+	} else {
+		return $post_meta;
+	}
+}
