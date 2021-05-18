@@ -36,13 +36,15 @@
 				?>
 			</div>
 		</nav>
-		
+
 		<?php if (get_header_image()) : ?>
 			<?php
 				if (is_category()) {
 					$title = single_cat_title('Category: ', false);
 				} else if (is_tag()) {
 					$title = single_tag_title('Tag: ', false);
+				} else if (is_post_type_archive()) {
+					$title = post_type_archive_title('', false);
 				} else if (is_home()) {
 					$title = "Blog";
 				} else if (is_search()) {

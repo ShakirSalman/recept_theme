@@ -14,19 +14,19 @@ function recept_theme_register_scripts_and_styles() {
 	*/
 	// Bootstrap 5
 	wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css', [], '5.0.0-beta3', 'all');
-	
+
 	// Theme styles
 	wp_enqueue_style('recept_theme', get_parent_theme_file_uri('style.css'), ['bootstrap'], '0.1', 'all');
-	
+
 	// Print styles
 	wp_enqueue_style('recept_theme-print', get_parent_theme_file_uri('print.css'), ['bootstrap'], '0.1', 'print');
-	
+
 	/**
 	 * Scripts
 	 */
 	// Bootstrap 5
 	 wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js', [], '5.0.0-beta3', true);
-	 
+
 	// Theme scripts
 	wp_enqueue_script('recept_theme', get_parent_theme_file_uri('assets/js/scripts.js'), ['bootstrap'], '0.1', true);
 }
@@ -56,7 +56,7 @@ add_action('wp_enqueue_scripts', 'recept_theme_register_scripts_and_styles');
 		'height' => 100,
 		'width' => 200,
 	]);
-	
+
 	/**
 	* Declare support for custom header image.
 	*/
@@ -124,7 +124,7 @@ function recept_theme_customizer($wp_customizer) {
 			]
 		)
 	);
-	
+
 	// Header Textshadow Color
 	$wp_customizer->add_setting('header_textshadow_color', [
 		'default' => '#dddddd',
@@ -201,7 +201,7 @@ function recept_theme_customizer($wp_customizer) {
 			]
 		)
 	);
-	
+
 	// Blog Section
 	$wp_customizer->add_section('recept_theme_blog', [
 		'title' => 'Blog Settings',
@@ -309,7 +309,7 @@ function recept_theme_filter_the_excerpt($excerpt) {
 	return $excerpt . '<div><a href="' . get_the_permalink() . '" class="btn btn-primary">Read more &raquo;</a></div>';
 }
 add_filter('the_excerpt', 'recept_theme_filter_the_excerpt');
- 
+
  /**
  * Register widget areas (sidebars).
  *
@@ -326,7 +326,7 @@ function recept_theme_widgets_init() {
 		'before_title' => '<h3 class="widget-title h5">',
 		'after_title' => '</h3>',
 	]);
-	
+
 	// Footer widget area
 	register_sidebar([
 		'name' => 'Footer',
@@ -337,7 +337,18 @@ function recept_theme_widgets_init() {
 		'before_title' => '<h3 class="widget-title h5">',
 		'after_title' => '</h3>',
 	]);
-	
+
+	// Recept widget area
+	register_sidebar([
+		'name' => 'Recept Sidebar',
+		'id' => 'recept-sidebar',
+		'description' => 'Sidebar on recepts archive and single recept reviews.',
+		'before_widget' => '<div id="%1$s" class="card mb-3 widget %2$s"><div class="card-body">',
+		'after_widget' => '</div></div>',
+		'before_title' => '<h3 class="widget-title h5">',
+		'after_title' => '</h3>',
+	]);
+
 	// Page widget area
 	register_sidebar([
 		'name' => 'Page Sidebar',
