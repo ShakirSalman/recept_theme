@@ -107,10 +107,22 @@ function recept_theme_navbar_brand() {
  * @return void
  */
 function recept_theme_customizer($wp_customizer) {
-	// Header Textcolor
-	$wp_customizer->add_setting('header_textcolor', [
-		'default' => '#222222',
+	// Use Header Textshadow?
+	$wp_customizer->add_setting('header_textshadow', [
+		'default' => false,
 	]);
+	$wp_customizer->add_control(
+		new WP_Customize_Control(
+			$wp_customizer,
+			'header_textshadow',
+			[
+				'label' => 'Header Textshadow',			// Admin-visible name of the control
+				'setting' => 'header_textshadow',		// Which setting to load and manipulate
+				'section' => 'colors', 					// ID of the section this control should render in
+				'type' => 'checkbox',
+			]
+		)
+	);
 	
 	// Header Textshadow Color
 	$wp_customizer->add_setting('header_textshadow_color', [
@@ -128,13 +140,100 @@ function recept_theme_customizer($wp_customizer) {
 			]
 		)
 	);
+
+	// Header Textshadow offset-x
+	$wp_customizer->add_setting('header_textshadow_offset_x', [
+		'default' => '0',
+	]);
+	$wp_customizer->add_control(
+		new WP_Customize_Control(
+			$wp_customizer,
+			'header_textshadow_offset_x',
+			[
+				'label' => 'Header Textshadow Offset X',		// Admin-visible name of the control
+				'description' => 'Offset in pixels',			// Admin-visible description of the control
+				'setting' => 'header_textshadow_offset_x',		// Which setting to load and manipulate
+				'section' => 'colors', 							// ID of the section this control should render in
+				'sanitize_callback' => 'recept_theme_sanitize_int',		// Sanitize integer
+				'type' => 'number',
+			]
+		)
+	);
+
+	// Header Textshadow offset-y
+	$wp_customizer->add_setting('header_textshadow_offset_y', [
+		'default' => '0',
+	]);
+	$wp_customizer->add_control(
+		new WP_Customize_Control(
+			$wp_customizer,
+			'header_textshadow_offset_y',
+			[
+				'label' => 'Header Textshadow Offset Y',		// Admin-visible name of the control
+				'description' => 'Offset in pixels',			// Admin-visible description of the control
+				'setting' => 'header_textshadow_offset_y',		// Which setting to load and manipulate
+				'section' => 'colors', 							// ID of the section this control should render in
+				'sanitize_callback' => 'recept_theme_sanitize_int',		// Sanitize integer
+				'type' => 'number',
+			]
+		)
+	);
+
+	// Header Textshadow blur-radius
+	$wp_customizer->add_setting('header_textshadow_blur_radius', [
+		'default' => '0',
+	]);
+	$wp_customizer->add_control(
+		new WP_Customize_Control(
+			$wp_customizer,
+			'header_textshadow_blur_radius',
+			[
+				'label' => 'Header Textshadow Blur Radius',		// Admin-visible name of the control
+				'description' => 'Blur radius in pixels',		// Admin-visible description of the control
+				'setting' => 'header_textshadow_blur_radius',	// Which setting to load and manipulate
+				'section' => 'colors', 							// ID of the section this control should render in
+				'sanitize_callback' => 'recept_theme_sanitize_int',		// Sanitize integer
+				'type' => 'number',
+				'input_attrs' => [
+					'min' => '0',
+				],
+			]
+		)
+	);
+	
 	// Blog Section
 	$wp_customizer->add_section('recept_theme_blog', [
 		'title' => 'Blog Settings',
 		'priority' => 30,
 	]);
+
+	// Blog sidebar
+	$wp_customizer->add_setting('blog_sidebar', [
+		'default' => 'right',
+	]);
+	$wp_customizer->add_control('blog_sidebar', [
+		'label' => 'Blog Sidebar Location',
+		'description' => 'This applies to devices ≥768px.',
+		'setting' => 'blog_sidebar',
+		'section' => 'recept_theme_blog',
+		'type' => 'radio',
+		'choices' => [
+			'left' => 'Left',
+			'right' => 'Right',
+		],
+	]);
 }
 add_action('customize_register', 'recept_theme_customizer');
+
+/**
+ * Sanitizes an integer.
+ *
+ * @param mixed $input
+ * @return int
+ */
+ function recept_theme_sanitize_int($input) {
+	return filter_var($input, FILTER_SANITIZE_NUMBER_INT);
+}
 
 /**
  * Output neccessary CSS for our theme modifications in WP Customizer.
@@ -142,14 +241,27 @@ add_action('customize_register', 'recept_theme_customizer');
  * @return void
  */
 function recept_theme_wp_head_customizer_css() {
-	?>
-		<style>
-			#site-header .header-text-wrapper {
-				color: #<?php echo get_theme_mod('header_textcolor'); ?>;
-				text-shadow: 0px 0px 4px <?php echo get_theme_mod('header_textshadow_color'); ?>;
-			}
-		</style>
-	<?php
+	$styles = [];
+
+	$header_textcolor = get_theme_mod('header_textcolor');
+	array_push($styles, "#site-header .header-text-wrapper {
+		color: #{$header_textcolor};
+	}");
+
+	if (get_theme_mod('header_textshadow')) {
+		$header_textshadow = sprintf(
+			"%dpx %dpx %dpx %s",
+			get_theme_mod('header_textshadow_offset_x'),
+			get_theme_mod('header_textshadow_offset_y'),
+			get_theme_mod('header_textshadow_blur_radius'),
+			get_theme_mod('header_textshadow_color')
+		);
+		array_push($styles, "#site-header .header-text-wrapper {
+			text-shadow: {$header_textshadow};
+		}");
+	}
+
+	printf("<style>%s</style>", implode("\n", $styles));
 }
 add_action('wp_head', 'recept_theme_wp_head_customizer_css');
 
@@ -261,3 +373,27 @@ add_action('widgets_init', 'recept_theme_widgets_init');
 add_filter('the_content', 'recept_theme_filter_bad_words');
 add_filter('the_excerpt', 'recept_theme_filter_bad_words');
 add_filter('the_title', 'recept_theme_filter_bad_words');
+
+function recept_theme_post_meta($display = true) {
+	$post_meta = sprintf(
+		"Post published %s at %s by %s in %s",
+		get_the_date(),
+		get_the_time(),
+		get_the_author(),
+		get_the_category_list(', ')
+	);
+
+	if (has_tag()) {
+		$post_meta = sprintf(
+			"%s with tags %s",
+			$post_meta,
+			get_the_tag_list('', ', ')
+		);
+	}
+
+	if ($display) {
+		echo $post_meta;
+	} else {
+		return $post_meta;
+	}
+}

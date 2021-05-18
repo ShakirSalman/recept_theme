@@ -1,5 +1,12 @@
 <?php
 get_header();
+
+$content_order = "";
+$sidebar_order = "";
+if (get_theme_mod('blog_sidebar') === 'left') {
+	$content_order = "order-md-2";
+	$sidebar_order = "order-md-1";
+}
 ?>
 
 <main class="container">
@@ -9,7 +16,7 @@ get_header();
 	<hr />
 
 	<div class="row">
-		<div class="col-md-9 content">
+		<div class="col-md-9 content <?php echo $content_order; ?>">
 			<!-- Do we have any posts to display? -->
 			<?php if (have_posts()) : ?>
 				<!-- Yay, we has posts do display! -->
@@ -28,7 +35,7 @@ get_header();
 			<?php endif; ?>
 		</div><!-- /.col-md-9 -->
 
-		<aside class="col-md-3 sidebar">
+		<aside class="col-md-3 sidebar <?php echo $sidebar_order; ?>">
 			<?php get_sidebar(); ?>
 		</aside><!-- /.col-md-3 -->
 

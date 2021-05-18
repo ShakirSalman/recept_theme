@@ -27,7 +27,7 @@
 
 					<footer>
 						<div class="card-meta text-muted small mb-2">
-							Post published <?php echo get_the_date(); ?> at <?php the_time(); ?> by <?php the_author(); ?> in <?php the_category(', '); ?>
+							<?php recept_theme_post_meta(); ?>
 						</div>
 					</footer>
 				</div>
