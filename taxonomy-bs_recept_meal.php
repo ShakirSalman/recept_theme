@@ -14,6 +14,11 @@ get_header();
 			<?php if (have_posts()) : ?>
 				<!-- Yay, we has posts do display! -->
 				<?php while (have_posts()) : ?>
+
+
+
+
+
 					<!-- Start post -->
 					<?php
 						// Load next post to display

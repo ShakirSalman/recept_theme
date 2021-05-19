@@ -3,6 +3,10 @@
 require_once('includes/Bootstrap_5_WP_Nav_Menu_Walker.php');
 require_once('includes/bs5-pagination.php');
 
+// Register our Custom Post Types and Custom Taxonomies
+require_once('includes/custom-post-types.php');
+require_once('includes/custom-taxonomies.php');
+
 /**
  * Register neccessary scripts and styles.
  *
@@ -68,7 +72,7 @@ add_action('wp_enqueue_scripts', 'recept_theme_register_scripts_and_styles');
 	'width' => 2560,
 
 	// Header image height (in pixels)
-	'height' => 500,
+	'height' => 300,
 
 	// Allow flexible image width
 	'flex-width' => true,
@@ -80,7 +84,7 @@ add_action('wp_enqueue_scripts', 'recept_theme_register_scripts_and_styles');
 	/**
 	 * Declare our own image size for archives
 	 */
-	add_image_size('featured-image-thumb', 400, 9999);
+	add_image_size('featured-image-thumb', 300, 9999);
 
 }
 add_action('after_setup_theme', 'recept_theme_theme_setup');

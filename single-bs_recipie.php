@@ -11,10 +11,15 @@ get_header();
 			<?php if (have_posts()) : ?>
 				<!-- Yay, we has posts do display! -->
 				<?php while (have_posts()) : ?>
+
+
+
+
 					<!-- Start post -->
 					<?php
 						// Load next post to display
 						the_post();
+
 						get_template_part('template-parts/content-bs_recipie');
 					?>
 					<!-- End post -->
@@ -23,7 +28,10 @@ get_header();
 		</div><!-- /.col-md-9 -->
 
 		<aside class="col-md-3 sidebar">
-			<?php get_sidebar('recept'); ?>
+			<div>
+				<h2>Ingredients</h2>
+				<?php echo (get_field('ingredient')); ?>
+			</div>
 		</aside><!-- /.col-md-3 -->
 
 	</div><!-- /.row -->
