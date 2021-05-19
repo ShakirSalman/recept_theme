@@ -7,6 +7,9 @@ require_once('includes/bs5-pagination.php');
 require_once('includes/custom-post-types.php');
 require_once('includes/custom-taxonomies.php');
 
+// Load bundled ACF plugin
+require get_template_directory() . '/inc/acf-loader.php';
+
 /**
  * Register neccessary scripts and styles.
  *

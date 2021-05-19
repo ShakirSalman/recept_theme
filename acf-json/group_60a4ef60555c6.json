@@ -1,0 +1,104 @@
+{
+    "key": "group_60a4ef60555c6",
+    "title": "Pecipie Details",
+    "fields": [
+        {
+            "key": "field_60a4f1353d04b",
+            "label": "Servings",
+            "name": "servings",
+            "type": "number",
+            "instructions": "This quantity is for number of persons",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 2,
+            "placeholder": 2,
+            "prepend": "",
+            "append": "",
+            "min": 2,
+            "max": 8,
+            "step": ""
+        },
+        {
+            "key": "field_60a55f9899072",
+            "label": "Ingredients",
+            "name": "ingredient",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_60a5743347e97",
+            "label": "Instructions",
+            "name": "instructions",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_60a58ad519d0a",
+            "label": "Cook",
+            "name": "cook",
+            "type": "number",
+            "instructions": "cooking time",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 5,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 5,
+            "max": 500,
+            "step": 5
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "bs_recipie"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1621465916
+}
