@@ -89,6 +89,11 @@ add_action('wp_enqueue_scripts', 'recept_theme_register_scripts_and_styles');
 	 */
 	add_image_size('featured-image-thumb', 300, 9999);
 
+	/**
+	 * Load translation files for textdomain 'recepttheme'
+	 */
+	load_theme_textdomain('recepttheme', get_template_directory() . '/languages');
+
 }
 add_action('after_setup_theme', 'recept_theme_theme_setup');
 
@@ -395,7 +400,7 @@ add_filter('the_title', 'recept_theme_filter_bad_words');
 
 function recept_theme_post_meta($display = true) {
 	$post_meta = sprintf(
-		"Post published %s at %s by %s in %s",
+		__("Post published %s at %s by %s in %s", "recepttheme"),
 		get_the_date(),
 		get_the_time(),
 		get_the_author(),
@@ -404,7 +409,7 @@ function recept_theme_post_meta($display = true) {
 
 	if (has_tag()) {
 		$post_meta = sprintf(
-			"%s with tags %s",
+			__("%s with tags %s", "recepttheme"),
 			$post_meta,
 			get_the_tag_list('', ', ')
 		);
@@ -443,7 +448,7 @@ function bs_recipie_meta($display = true) {
 	global $post;
 
 	$post_meta = sprintf(
-		"Review published %s at %s by %s",
+		__("published %s at %s by %s","recepttheme"),
 		get_the_date(),
 		get_the_time(),
 		get_the_author()
@@ -462,7 +467,7 @@ function bs_recipie_meta($display = true) {
 			array_push($meal_links, $meal_link);
 		}
 		$post_meta = sprintf(
-			"%s in %s",
+			__("%s in %s","recepttheme"),
 			$post_meta,
 			implode(', ', $meal_links)
 		);

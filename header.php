@@ -52,10 +52,10 @@
 					$title = single_term_title('Meal: ', false);
 
 				} else if (is_home()) {
-					$title = "Blog";
+					$title = __("Blog", "recepttheme");
 
 				} else if (is_search()) {
-					$title = sprintf('Search results for "%s"', htmlspecialchars($_REQUEST['s']));
+					$title = sprintf(__('Search results for "%s"',"recepttheme"), htmlspecialchars($_REQUEST['s']));
 
 				} else {
 					$title = get_the_title();

@@ -1,0 +1,94 @@
+# Copyright (C) 2021 Shakir Salman
+# This file is distributed under the WTFPL.
+msgid ""
+msgstr ""
+"Project-Id-Version: recept Theme 0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/recept_theme\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-05-20T18:41:14+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: recepttheme\n"
+
+#. Theme Name of the theme
+msgid "recept Theme"
+msgstr ""
+
+#. Description of the theme
+msgid "My first WordPress theme."
+msgstr ""
+
+#. Author of the theme
+msgid "Shakir Salman"
+msgstr ""
+
+#: functions.php:403
+msgid "Post published %s at %s by %s in %s"
+msgstr ""
+
+#: functions.php:412
+msgid "%s with tags %s"
+msgstr ""
+
+#: functions.php:451
+msgid "published %s at %s by %s"
+msgstr ""
+
+#: functions.php:470
+msgid "%s in %s"
+msgstr ""
+
+#: header.php:55
+msgid "Blog"
+msgstr ""
+
+#: header.php:58
+msgid "Search results for \"%s\""
+msgstr ""
+
+#: includes/custom-post-types.php:10
+#: includes/custom-post-types.php:17
+msgid "Recipies"
+msgstr ""
+
+#: includes/custom-post-types.php:11
+msgid "Recipie"
+msgstr ""
+
+#: includes/custom-post-types.php:12
+#: includes/custom-post-types.php:13
+msgid "Featured Image"
+msgstr ""
+
+#: includes/custom-taxonomies.php:10
+#: includes/custom-taxonomies.php:16
+msgid "meals"
+msgstr ""
+
+#: includes/custom-taxonomies.php:11
+msgid "meal"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Page with Left Sidebar"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Page with Right Sidebar"
+msgstr ""
+
+#: template-parts/content-bs_recipie.php:14
+msgid "Serves:"
+msgstr ""
+
+#: template-parts/content-bs_recipie.php:21
+msgid "Cook:"
+msgstr ""
+
+#: template-parts/content-bs_recipie.php:42
+msgid "&laquo; All Recepts"
+msgstr ""
