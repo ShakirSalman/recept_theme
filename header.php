@@ -48,7 +48,7 @@
 				} else if (is_post_type_archive()) {
 					$title = post_type_archive_title('', false);
 
-				} else if (is_tax('bs_recept_meal')) {
+				} else if (is_tax('bs_recipie_meal')) {
 					$title = single_term_title('Meal: ', false);
 
 				} else if (is_home()) {

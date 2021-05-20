@@ -22,15 +22,14 @@ function cptui_register_my_taxes() {
 		"show_in_menu" => true,
 		"show_in_nav_menus" => true,
 		"query_var" => true,
-		"rewrite" => [ 'slug' => 'recept_meals', 'with_front' => true, ],
+		"rewrite" => [ 'slug' => 'recipie_meals', 'with_front' => true, ],
 		"show_admin_column" => false,
 		"show_in_rest" => true,
-		"rest_base" => "bs_recept_meal",
+		"rest_base" => "bs_recipie_meal",
 		"rest_controller_class" => "WP_REST_Terms_Controller",
 		"show_in_quick_edit" => false,
 		"show_in_graphql" => false,
 	];
-	register_taxonomy( "bs_recept_meal", [ "bs_recipie" ], $args );
+	register_taxonomy( "bs_recipie_meal", [ "bs_recipie" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes' );
-

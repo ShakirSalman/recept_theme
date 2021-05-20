@@ -452,16 +452,15 @@ function bs_recipie_meta($display = true) {
 	// $post_id = $post->ID;
 	$post_id = get_the_ID();
 
-	$meals = get_the_terms($post_id, 'bs_recept_meal');
+	$meals = get_the_terms($post_id, 'bs_recipie_meal');
 
 	if ($meals) {
 		$meal_links = [];
 		foreach ($meals as $meal) {
-			$meal_url = get_term_link($meal, 'bs_recept_meal');
+			$meal_url = get_term_link($meal, 'bs_recipie_meal');
 			$meal_link = sprintf('<a href="%s">%s</a>', $meal_url, $meal->name);
 			array_push($meal_links, $meal_link);
 		}
-
 		$post_meta = sprintf(
 			"%s in %s",
 			$post_meta,
