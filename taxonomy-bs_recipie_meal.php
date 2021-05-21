@@ -1,7 +1,7 @@
 <?php
 get_header();
 ?>
-<h1>tax</h1>
+
 <!-- taxonomy-bs_recipie_meal.php -->
 <main class="container">
 	<?php if (!get_header_image()) : ?>

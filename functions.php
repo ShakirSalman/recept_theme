@@ -400,16 +400,26 @@ add_filter('the_title', 'recept_theme_filter_bad_words');
 
 function recept_theme_post_meta($display = true) {
 	$post_meta = sprintf(
-		__("Post published %s at %s by %s in %s", "recepttheme"),
+		// translators: Used in blog post information, if a post is posted in one or more categories. Example: "Post published 23 april, 2021 at 09:37 by jn"
+		__('Post published %1$s at %2$s by %3$s', 'recepttheme'),
 		get_the_date(),
 		get_the_time(),
-		get_the_author(),
-		get_the_category_list(', ')
+		get_the_author()
 	);
+
+	if (has_category()) {
+		$post_meta = sprintf(
+			// translators: Used in blog post information, if a post is posted in one or more categories. Example: "Post published by jn in Ipsums"
+			_x('%1$s in %2$s', 'blog post category', 'recepttheme'),
+			$post_meta,
+			get_the_category_list(', ')
+		);
+	}
 
 	if (has_tag()) {
 		$post_meta = sprintf(
-			__("%s with tags %s", "recepttheme"),
+			// translators: Used in blog post information, if a post has one or more tags. Example: "Post published by jn with tags grafitti, skate"
+			__('%1$s with tags %2$s', 'recepttheme'),
 			$post_meta,
 			get_the_tag_list('', ', ')
 		);
@@ -458,7 +468,7 @@ function bs_recipie_meta($display = true) {
 	$post_id = get_the_ID();
 
 	$meals = get_the_terms($post_id, 'bs_recipie_meal');
-
+	$tags = get_the_terms($post_id, 'bs_recipie_tag');
 	if ($meals) {
 		$meal_links = [];
 		foreach ($meals as $meal) {
@@ -470,6 +480,19 @@ function bs_recipie_meta($display = true) {
 			__("%s in %s","recepttheme"),
 			$post_meta,
 			implode(', ', $meal_links)
+		);
+	}
+	if ($tags) {
+		$tag_links = [];
+		foreach ($tags as $tag) {
+			$tag_url = get_term_link($tag, 'bs_recipie_tag');
+			$tag_link = sprintf('<a href="%s">%s</a>', $tag_url, $tag->name);
+			array_push($tag_links, $tag_link);
+		}
+		$post_meta = sprintf(
+			__("%s in %s","recepttheme"),
+			$post_meta,
+			implode(', ', $tag_links)
 		);
 	}
 
