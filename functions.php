@@ -490,7 +490,7 @@ function bs_recipie_meta($display = true) {
 			array_push($tag_links, $tag_link);
 		}
 		$post_meta = sprintf(
-			__("%s in %s","recepttheme"),
+			__("%s with tags %s","recepttheme"),
 			$post_meta,
 			implode(', ', $tag_links)
 		);

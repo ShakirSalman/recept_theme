@@ -9,7 +9,7 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 }
 ?>
 
-<!-- tag.php -->
+<!-- taxonomy-bs_recipie_tag.php -->
 <main class="container">
 	<?php if (!get_header_image()) : ?>
 		<h1><?php single_tag_title('Tag: '); ?></h1>
@@ -25,7 +25,7 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 					<?php
 						// Load next post to display
 						the_post();
-						get_template_part('template-parts/content', 'excerpt');
+						get_template_part('template-parts/content-bs_recipie', 'excerpt');
 					?>
 					<!-- End post -->
 				<?php endwhile; ?>
@@ -34,12 +34,12 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 				<?php get_template_part('template-parts/posts-pagination'); ?>
 				<!-- Pagination end -->
 			<?php else: ?>
-				<p>Sorry, no posts found with this tag.</p>
+				<p>Sorry, no meals found with this tag.</p>
 			<?php endif; ?>
 		</div><!-- /.col-md-9 -->
 
 		<aside class="col-md-3 sidebar <?php echo $sidebar_order; ?>">
-			<?php get_sidebar(); ?>
+		<?php get_sidebar('recept'); ?>
 		</aside><!-- /.col-md-3 -->
 
 	</div><!-- /.row -->

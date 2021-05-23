@@ -1,4 +1,4 @@
-<article class="recept card mb-4">
+<article class="recipie card mb-4">
 
 	<?php if (has_post_thumbnail()) : ?>
 		<div class="row g-0">
