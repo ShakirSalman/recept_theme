@@ -5,7 +5,6 @@ get_header();
 <!-- 404.php -->
 <main class="container mt-3">
 
-	<h1>Page Not Found</h1>
 	<div class="text-center mb-5">
 		<img src="https://blog.thomasnet.com/hs-fs/hubfs/shutterstock_774749455.jpg?width=600&name=shutterstock_774749455.jpg" class="img-fluid" alt="A cat hiding under a stack of papers" title="Peek-a-boo!">
 
