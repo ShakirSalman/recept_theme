@@ -1,6 +1,6 @@
 <article>
 	<header class="mb-3">
-		<?php the_post_thumbnail('large', ['class' => 'img-fluid mb-2']); ?>
+		<?php the_post_thumbnail('large', ['class' => 'img-fluid m-2']); ?>
 		<?php if (!get_header_image()) : ?>
 			<h1><?php the_title(); ?></h1>
 		<?php endif; ?>
@@ -26,6 +26,9 @@
 		<?php the_content(); ?>
 	</div>
 	<div>
+		<h2>Ingredients</h2>
+		<?php echo (get_field('ingredient')); ?>
+	</div>
 		<h2>instructions</h2>
 		<?php echo (get_field('instructions')); ?>
 	</div>
@@ -39,6 +42,6 @@
 
 <div class="d-flex">
 	<a href="<?php echo get_post_type_archive_link('bs_recipie'); ?>" class="page-link">
-		<?php echo __("&laquo; All Recepts", "recepttheme"); ?>
+		<?php echo __("&laquo; All Recipies", "recepttheme"); ?>
 	</a>
 </div>
