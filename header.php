@@ -49,7 +49,10 @@
 					$title = post_type_archive_title('', false);
 
 				} else if (is_tax('bs_recipie_meal')) {
-					$title = single_term_title('Meal: ', false);
+					$title = single_term_title('Meal for: ', false);
+
+				} else if (is_tax('bs_recipie_tag')) {
+					$title = single_term_title('Tag: ', false);
 
 				} else if (is_home()) {
 					$title = __("Blog", "recepttheme");

@@ -10,7 +10,7 @@ if (get_theme_mod('blog_sidebar') === 'left') {
 ?>
 
 <!-- taxonomy-bs_recipie_tag.php -->
-<main class="container">
+<main class="container mt-3">
 	<?php if (!get_header_image()) : ?>
 		<h1><?php single_tag_title('Tag: '); ?></h1>
 	<?php endif; ?>

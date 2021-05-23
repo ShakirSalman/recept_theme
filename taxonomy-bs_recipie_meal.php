@@ -5,7 +5,7 @@ get_header();
 ?>
 
 <!-- taxonomy-bs_recipie_meal.php -->
-<main class="container">
+<main class="container mt-3">
 	<?php if (!get_header_image()) : ?>
 		<h1><?php single_cat_title('Meal: '); ?></h1>
 	<?php endif; ?>
